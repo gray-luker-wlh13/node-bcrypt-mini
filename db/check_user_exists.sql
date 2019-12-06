@@ -1,3 +1,3 @@
 SELECT *
-FROM users
-WHERE email = $1;
+FROM auth_user
+WHERE user_email = $1;

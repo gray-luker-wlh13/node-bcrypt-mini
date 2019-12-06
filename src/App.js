@@ -12,11 +12,32 @@ class App extends Component {
     };
   }
 
-  async login() {}
+  async login() {
+    let {email, password} = this.state;
+    axios.post('/auth/login', {email, password}).then(res => {
+      this.setState({
+        loggedInUser: res.data,
+        email: '',
+        password: ''
+      })
+    })
+  }
 
-  async signup() {}
+  async signup() {
+    let {email, password} = this.state;
+    axios.post('/auth/signup', {email, password}).then(res => {
+      this.setState({
+        loggedInUser: res.data,
+        email: '',
+        password: ''
+      })
+    })
+  }
 
-  logout() {}
+  logout() {
+    axios.post('/auth/logout');
+    this.setState({loggedInUser: {}})
+  }
 
   render() {
     let { loggedInUser, email, password } = this.state;
